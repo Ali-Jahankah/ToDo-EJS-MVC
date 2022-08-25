@@ -31,20 +31,36 @@
                 </div>
             </form>
             <div class="tasks_div">
-                <table class="undone_table">
-                    <thead>
-                        <tr>
-                            <td>Not Completed Tasks</td>
-                        </tr>
-                    </thead>
-                </table>
-                <table class="done_table">
-                    <thead>
-                        <tr>
-                            <td>Completed Tasks</td>
-                        </tr>
-                    </thead>
-                </table>
+                <% if(todos.length>0){  %>
+                    <table class="undone_table">
+                        <thead>
+                            <tr>
+                                <td>Not Completed Tasks</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let todo of todos){ %>
+                            <tr>
+                                <td> <%= todo["text"] %>  </td>
+                            </tr>
+                                <% } %> 
+                        </tbody>
+                    </table>
+                    <table class="done_table">
+                        <thead>
+                            <tr>
+                                <td>Completed Tasks</td>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    
+                    <% } else{ %> 
+                 
+                        <h1>There is not any task todo for now! :(</h1>
+                        
+                        <% } %> 
+            
             </div>
         </div>
  
