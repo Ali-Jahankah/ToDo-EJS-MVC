@@ -79,3 +79,10 @@ a {
 .btn:hover {
   background: rgb(226, 68, 0);
 }
+.no_task_div {
+  padding: 1.5em;
+  text-align: center;
+  background: rgba(255, 132, 0, 0.913);
+  margin: 1em auto;
+  border-radius: 20px;
+}

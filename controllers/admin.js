@@ -22,3 +22,12 @@ exports.deleteTodo = (req, res) => {
     }
   });
 };
+exports.completeTodo = (req, res) => {
+  Todo.completeTodo(req.params.id, (err) => {
+    if (!err) {
+      res.redirect("/");
+    } else {
+      console.log(err);
+    }
+  });
+};
