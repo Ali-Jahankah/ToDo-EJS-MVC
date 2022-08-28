@@ -26,17 +26,17 @@
             </div>
         </form>
         <div class="tasks_div">
-            <% if(todos.length>0){ %>
+            <% if(todos.todos.length>0){ %>
             <table class="undone_table">
                 <thead>
                     <tr>
                         <td>Not Completed Tasks <span
-                                style="color:rgb(217, 0, 255);text-decoration: underline;"><%= todos.length %></span>
+                                style="color:rgb(217, 0, 255);text-decoration: underline;"><%= todos.nonComps.length %></span>
                         </td>
                     </tr>
                 </thead>
                 <tbody>
-                    <% for(let todo of todos){ %>
+                    <% for(let todo of todos.nonComps){ %>
                     <% if(todo.completed===false){ %> <tr>
 
                         <td>
@@ -65,11 +65,11 @@
             <table class="done_table">
                 <thead>
                     <tr>
-                        <td>Completed Tasks</td>
+                        <td>Completed Tasks <span style="color:rgb(217, 0, 255);text-decoration: underline;"><%= todos.comps.length  %> </span></td>
                     </tr>
                 </thead>
                 <tbody>
-                    <% for(let todo of todos){ %>
+                    <% for(let todo of todos.comps){ %>
                    <% if(todo.completed){ %>   
                      <tr>
 

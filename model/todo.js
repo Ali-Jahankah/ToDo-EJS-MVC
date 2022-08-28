@@ -16,7 +16,13 @@ class Todo {
   }
   static getAllTodos(callback) {
     todosMethods.getTodos((todos) => {
-      callback(todos);
+      const comps = todos.filter((item) => item.completed === true);
+      const nonComps = todos.filter((item) => item.completed === false);
+      callback({
+        todos,
+        comps,
+        nonComps,
+      });
     });
   }
   static deleteTodo(id, callback) {
