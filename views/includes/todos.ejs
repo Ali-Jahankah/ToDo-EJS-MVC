@@ -1,0 +1,73 @@
+<% if(todos.todos.length>0){ %>
+    <table class="undone_table">
+        <thead>
+            <tr>
+                <td>Not Completed Tasks <span
+                        style="color:rgb(217, 0, 255);text-decoration: underline;"><%= todos.nonComps.length %></span>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let todo of todos.nonComps){ %>
+            <% if(todo.completed===false){ %> <tr>
+
+                <td>
+
+                    <%= todo["text"] %>
+
+                    <div>
+                        <a class="close fa fa-trash" href="/admin/delete-todo/<%= todo.id  %> "
+                            style="color:rgb(0, 0, 0);font-size: 1.5rem; margin: 0 5px;"></a>
+                        <a class="close fa fa-check-square" href="/admin/complete-todo/<%= todo.id %>"
+                            style="color:rgb(0, 0, 0);font-size: 1.5rem; margin: 0 5px;"></a>
+
+
+                      
+                    </div>
+
+
+
+                </td>
+
+
+            </tr> <% } %>
+            <% } %>
+        </tbody>
+    </table>
+    <table class="done_table">
+        <thead>
+            <tr>
+                <td>Completed Tasks <span style="color:rgb(217, 0, 255);text-decoration: underline;"><%= todos.comps.length  %> </span></td>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let todo of todos.comps){ %>
+           <% if(todo.completed){ %>   
+             <tr>
+
+                <td style=<%= todo.completed&&"background:green" %>>
+                 
+               <del> <%= todo["text"] %></del>    
+                    <div>
+                        <a class="close fa fa-trash" href="/admin/delete-todo/<%= todo.id  %> "
+                            style="color:rgb(0, 0, 0);font-size: 1.5rem; margin: 0 5px;"></a>
+                        <a class="close fa fa-check-square" href="/admin/complete-todo/<%= todo.id %>"
+                            style="color:rgb(0, 0, 0);font-size: 1.5rem; margin: 0 5px;"></a>
+                    </div>
+                    
+                </td>
+
+
+            </tr><%  }%>
+            <% } %>
+        </tbody>
+    </table>
+
+    <% } else{ %>
+    <div class="no_task_div">
+        <h1>There is not any task todo for now! :(</h1>
+        <h2>You can add your daily tasks here :) <span class="fa fa-heart" style="color:red"></span></h2>
+    </div>
+
+
+    <% } %>

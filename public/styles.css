@@ -86,3 +86,20 @@ a {
   margin: 1em auto;
   border-radius: 20px;
 }
+.error_link {
+  padding: 0.5em;
+  background: orange;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 2em;
+  display: block;
+}
+.error_div {
+  padding: 2em;
+  margin: 2em auto;
+  border-radius: 20px;
+  background: gold;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
