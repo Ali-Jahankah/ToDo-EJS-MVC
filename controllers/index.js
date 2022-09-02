@@ -1,11 +1,16 @@
 const Todo = require("../model/todo");
 
 exports.getIndex = (req, res) => {
-  Todo.getAllTodos((todos) => {
-    console.log(todos);
+  Todo.findAll().then((todos) => {
+    const comps = todos.filter((item) => item.completed === true);
+    const nonComps = todos.filter((item) => item.completed === false);
     res.render("index", {
       title: "EJS | TODO List",
-      todos,
+      todos: {
+        todos,
+        comps,
+        nonComps,
+      },
     });
   });
 };

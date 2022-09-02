@@ -7,6 +7,7 @@ const Todo = sequelize.define("Todo", {
     type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
+    primaryKey: true,
   },
   text: {
     type: DataTypes.STRING,
