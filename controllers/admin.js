@@ -4,14 +4,7 @@ exports.addTodo = (req, res) => {
   if (!req.body.todo) {
     return res.redirect("/");
   }
-  // const todo = new Todo(todosMethods.randomId(), req.body.todo);
-  // todo.save((err) => {
-  //   if (!err) {
-  //     return res.redirect("/");
-  //   } else {
-  //     console.log(err);
-  //   }
-  // });
+
   Todo.create({ text: req.body.todo })
     .then((result) => {
       res.redirect("/");
@@ -19,14 +12,7 @@ exports.addTodo = (req, res) => {
     .catch((err) => console.log(err));
 };
 exports.deleteTodo = (req, res) => {
-  // Todo.deleteTodo(req.params.id, (err) => {
-  //   if (!err) {
-  //     res.redirect("/");
-  //   } else {
-  //     console.log(err);
-  //   }
-  // });
-  Todo.destroy({ where: { id: req.params.id } })
+  Todo.findByIdAndRemove(req.params.id)
     .then((result) => res.redirect("/"))
     .catch((err) => console.log(err));
 };
@@ -38,9 +24,9 @@ exports.completeTodo = (req, res) => {
   //     console.log(err);
   //   }
   // });
-  Todo.findByPk(req.params.id)
+  Todo.findById(req.params.id)
     .then((todo) => {
-      todo.completed = true;
+      todo.completed = !todo.completed;
       return todo.save();
     })
     .then((result) => res.redirect("/"))

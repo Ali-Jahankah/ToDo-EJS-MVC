@@ -1,7 +1,7 @@
 const Todo = require("../model/todo");
 
 exports.getIndex = (req, res) => {
-  Todo.findAll().then((todos) => {
+  Todo.find().then((todos) => {
     const comps = todos.filter((item) => item.completed === true);
     const nonComps = todos.filter((item) => item.completed === false);
     res.render("index", {

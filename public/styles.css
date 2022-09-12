@@ -6,6 +6,10 @@
   letter-spacing: 1px;
   border: 0;
 }
+body {
+  min-height: 100vh;
+  background: rgb(25, 24, 24);
+}
 li {
   list-style: none;
 }
@@ -25,7 +29,7 @@ a {
   flex-direction: column;
   text-align: center;
   font-size: 1.2rem;
-  background: rgb(219, 210, 210);
+  background: rgba(219, 210, 210, 0.45);
 }
 
 .tasks_div {

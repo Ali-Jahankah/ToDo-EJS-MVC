@@ -1,23 +1,17 @@
-const { DataTypes } = require("sequelize");
+const mongoose = require("mongoose");
 
-const sequelize = require("../utils/database");
-
-const Todo = sequelize.define("Todo", {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    autoIncrement: true,
-    primaryKey: true,
-  },
+const todoSchema = new mongoose.Schema({
   text: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    type: String,
+    require: true,
+    trim: true,
+    minLength: 1,
   },
   completed: {
-    type: DataTypes.BOOLEAN,
-    allowNull: true,
-    defaultValue: false,
+    type: Boolean,
+    require: false,
+    default: false,
   },
 });
-
+const Todo = mongoose.model("Todo", todoSchema);
 module.exports = Todo;
