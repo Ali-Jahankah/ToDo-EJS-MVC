@@ -1,4 +1,5 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 require("./utils/database");
 const { setStatics } = require("./utils/static");
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.set('views,"views');
 setStatics(app);
+app.use(cookieParser());
 app.use(todosRoutes);
 app.use("/admin", adminRoutes);
 app.use(error.error404);

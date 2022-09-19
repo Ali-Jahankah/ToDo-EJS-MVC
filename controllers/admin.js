@@ -13,7 +13,7 @@ exports.addTodo = (req, res) => {
 };
 exports.deleteTodo = (req, res) => {
   Todo.findByIdAndRemove(req.params.id)
-    .then((result) => res.redirect("/"))
+    .then((result) => res.clearCookie("myToken").redirect("/"))
     .catch((err) => console.log(err));
 };
 exports.completeTodo = (req, res) => {
@@ -29,6 +29,6 @@ exports.completeTodo = (req, res) => {
       todo.completed = !todo.completed;
       return todo.save();
     })
-    .then((result) => res.redirect("/"))
+    .then((result) => res.cookie("myToken", req.params.id).redirect("/"))
     .catch((err) => console.log(err));
 };
