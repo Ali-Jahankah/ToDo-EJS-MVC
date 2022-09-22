@@ -17,13 +17,6 @@ exports.deleteTodo = (req, res) => {
     .catch((err) => console.log(err));
 };
 exports.completeTodo = (req, res) => {
-  // Todo.completeTodo(req.params.id, (err) => {
-  //   if (!err) {
-  //     res.redirect("/");
-  //   } else {
-  //     console.log(err);
-  //   }
-  // });
   Todo.findById(req.params.id)
     .then((todo) => {
       todo.completed = !todo.completed;
@@ -31,4 +24,14 @@ exports.completeTodo = (req, res) => {
     })
     .then((result) => res.cookie("myToken", req.params.id).redirect("/"))
     .catch((err) => console.log(err));
+};
+exports.setSession = (req, res) => {
+  if (req.session.view) {
+    req.session.view++;
+    res.send(`You are visiting this page for ${req.session.view} times`);
+  } else {
+    req.session.view = 1;
+    res.send(`You are visiting this page for First times`);
+  }
+  res.send("new session");
 };
